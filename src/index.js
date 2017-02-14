@@ -1,7 +1,6 @@
 // credits to https://gist.github.com/bennadel/3379332
 // for the inspiration
 // ======================================================/
-// import {_, template} from "lodash";
 import "lodash";
 
 // When rending an underscore template, we want top-level
@@ -12,20 +11,17 @@ import "lodash";
 // templates that use the rc (Request Context / Colletion) in
 // order to render their markup.
 _.templateSettings.variable = "rc";
-var _fromjson = "";
-
 
 // Grab the HTML out of our template tag and pre-compile it.
-var template = _.template(
+var templateCompile = _.template(
   $("script.template").html()
 );
-
 
 // Render the underscore template and inject it after the H1
 // in our current DOM.
 var injectData = function () {
   $("h1").after(
-    template(templateData)
+    templateCompile(templateData)
   );
 };
 
