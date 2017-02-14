@@ -13,33 +13,31 @@ import "lodash";
 _.templateSettings.variable = "rc";
 
 // Grab the HTML out of our template tag and pre-compile it.
-var templateCompile = _.template(
+const templateCompile = _.template(
   $("script.template").html()
 );
 
 // Render the underscore template and inject it after the H1
 // in our current DOM.
-var injectData = function () {
+const injectData = () => {
   $("h1").after(
     templateCompile(templateData)
   );
 };
 
 // Define our render data (to be put into the "rc" variable).
-var templateData = {};
+let templateData = {};
 
-var loadAjax = function () {
+(function () {
   $.getJSON({
       method: "GET",
       url: "src/js/ajax/bonsai.json",
       dataType: "json",
       cache: true
     })
-    .done(function (data) {
+    .done((data) => {
       templateData = data;
       console.log(templateData.bonsai.length);
       injectData();
     });
-};
-
-loadAjax();
+})();
