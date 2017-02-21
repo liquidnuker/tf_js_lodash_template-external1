@@ -6,7 +6,6 @@ import {_, template} from "lodash";
 _.templateSettings.variable = "rc";
 var _fromjson = "";
 
-
 // Grab the HTML out of our template tag and pre-compile it.
 var template = _.template(
   $("script.template").html()
