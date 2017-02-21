@@ -3,13 +3,6 @@
 // ======================================================/
 import {_, template} from "lodash";
 
-// When rending an underscore template, we want top-level
-// variables to be referenced as part of an object. For
-// technical reasons (scope-chain search), this speeds up
-// rendering; however, more importantly, this also allows our
-// templates to look / feel more like our server-side
-// templates that use the rc (Request Context / Colletion) in
-// order to render their markup.
 _.templateSettings.variable = "rc";
 var _fromjson = "";
 
